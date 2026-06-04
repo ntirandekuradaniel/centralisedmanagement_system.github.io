@@ -1,8 +1,4 @@
-/* =====================================================
-   EDU RURAL CENTRAL - MODERN GREEN + BRIGHT DESIGN
-   ===================================================== */
 
-/* RESET */
 *{
     margin:0;
     padding:0;
@@ -10,13 +6,13 @@
     font-family:'Segoe UI', Arial, sans-serif;
 }
 
-/* COLOR SYSTEM */
+
 :root{
     --green-dark:#14532d;
     --green:#166534;
     --green-light:#22c55e;
 
-    --gold:#f59e0b;   /* accent color */
+    --gold:#f59e0b;   
     --blue:#2563eb;
 
     --bg:#f8fafc;
@@ -25,16 +21,12 @@
     --danger:#dc2626;
 }
 
-/* BODY */
+
 body{
     background:var(--bg);
     color:var(--text);
     line-height:1.7;
 }
-
-/* =====================================================
-   BUTTONS (GREEN + GOLD ACCENT)
-   ===================================================== */
 
 .btn{
     padding:12px 22px;
@@ -70,9 +62,6 @@ body{
     width:100%;
 }
 
-/* =====================================================
-   NAVBAR (DARK GREEN PROFESSIONAL)
-   ===================================================== */
 
 .navbar{
     display:flex;
@@ -90,9 +79,6 @@ body{
     color:var(--gold);
 }
 
-/* =====================================================
-   HERO (VERY BRIGHT + CLEAN BACKGROUND IMAGE)
-   ===================================================== */
 
 .hero{
     text-align:center;
@@ -120,10 +106,6 @@ body{
     color:#334155;
 }
 
-/* =====================================================
-   FEATURES SECTION
-   ===================================================== */
-
 .features{
     padding:100px 10%;
     text-align:center;
@@ -141,7 +123,7 @@ body{
     gap:30px;
 }
 
-/* CARDS */
+
 .card{
     background:white;
     padding:35px;
@@ -155,10 +137,6 @@ body{
     transform:translateY(-6px);
     border-top:4px solid var(--gold);
 }
-
-/* =====================================================
-   AUTH PAGES (BRIGHT CLEAN BACKGROUND)
-   ===================================================== */
 
 .auth-body{
     min-height:100vh;
@@ -205,7 +183,7 @@ body{
     box-shadow:0 0 0 3px rgba(34,197,94,0.15);
 }
 
-/* LINKS */
+
 .auth-links a{
     color:var(--green);
     font-weight:600;
@@ -216,16 +194,12 @@ body{
     text-decoration:underline;
 }
 
-/* =====================================================
-   DASHBOARD (DARK GREEN SIDEBAR + CLEAN CONTENT)
-   ===================================================== */
-
 .dashboard-container{
     display:flex;
     min-height:100vh;
 }
 
-/* SIDEBAR */
+
 .sidebar{
     width:260px;
     background:var(--green-dark);
@@ -261,7 +235,6 @@ body{
     background:#b91c1c;
 }
 
-/* MAIN CONTENT */
 .main-content{
     flex:1;
     padding:40px;
@@ -283,7 +256,7 @@ body{
     font-weight:600;
 }
 
-/* DATA PANELS */
+
 .data-panel{
     background:white;
     padding:25px;
@@ -293,7 +266,6 @@ body{
     border-left:5px solid var(--green);
 }
 
-/* TABLES */
 table{
     width:100%;
     border-collapse:collapse;
@@ -303,10 +275,6 @@ th, td{
     padding:14px;
     border-bottom:1px solid #eee;
 }
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
 
 @media(max-width:768px){
     .dashboard-container{
