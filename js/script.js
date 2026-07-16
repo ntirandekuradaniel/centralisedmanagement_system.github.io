@@ -1,6 +1,4 @@
-// ============================================
-// EDU RURAL CENTRAL - MAIN JAVASCRIPT
-// ============================================
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
