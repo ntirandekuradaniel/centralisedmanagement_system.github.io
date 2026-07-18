@@ -3,54 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - EduRural Central</title>
-
+    <title>Edu Rural Central - Account Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="auth-body">
+   
+    <nav class="portal-nav">
+        <h1 onclick="window.location.href='./index.html'">Edu Rural Central</h1>
+        <div class="nav-links">
+            <button onclick="window.location.href='./index.html'">Home</button>
+            <button onclick="window.location.href='./login.html'">Sign In</button>
+        </div>
+    </nav>
 
-    <div class="auth-container">
-
-        <h2>Create Account</h2>
-
-        <p class="login-text">
-            Register to access the EduRural Central Dashboard
-        </p>
-
-        <form action="dashboard.html" novalidate>
-            <input type="text" placeholder="Full Name" required>
-
-            <input type="text" placeholder="Username" required>
-
-            <input type="email" placeholder="Email Address" required>
-
-            <input type="password" placeholder="Password" required>
-
-            <button type="submit" class="btn btn-primary full-btn">
-                Create Account
-            </button>
-
-        </form>
-
-        <div class="auth-links">
-
-            <p>
-                Already have an account?
-                <a href="login.html">Login</a>
-            </p>
-
+   
+    
+    <div class="wizard-container">
+        <div id="regAlert" class="alert alert-danger"></div>
+        
+        
+        <div id="reg-step-1" class="step-panel active">
+            <div class="card-title">Step 1: Declare Operational Domain Clearance</div>
+            <div class="form-group">
+                <label>Select System Clearance Profile</label>
+                <select id="regTargetRole">
+                    <option value="teacher">Classroom Instructor / Teacher</option>
+                    <option value="headteacher">Campus Head Administrator / Head Teacher</option>
+                    <option value="highauthority">Sub-District Regional High Authority</option>
+                </select>
+            </div>
+            <button type="button" id="btnNextStep" class="btn-primary-action" style="width:100%; padding: 0.65rem; display: block; border: none; cursor: pointer; font-weight: 600;">Proceed to Attributes Setup</button>
         </div>
 
-        <div class="back-home">
+       
+        <div id="reg-step-2" class="step-panel" style="display: none;">
+            <div class="card-title">Step 2: Account Context Mapping</div>
+            <form id="registrationForm">
+                <div class="form-group"><label>Full Legal Name</label><input type="text" id="attrName" required></div>
+                <div class="form-group"><label>Direct Contact Mobile Number</label><input type="text" id="attrPhone" required placeholder="e.g., +250..."></div>
+                <div class="form-group"><label>Verifiable Contact Email</label><input type="email" id="attrEmail" required></div>
+                <div class="form-group"><label>Chronological Age Metric</label><input type="number" id="attrAge" required min="18"></div>
+                <div class="form-group"><label>Active Years Operational Experience</label><input type="number" id="attrExp" required></div>
+                <div class="form-group"><label>Specific Place of Residence</label><input type="text" id="attrResidence" required></div>
+                <div class="form-group"><label>National Origin / Nationality</label><input type="text" id="attrNationality" required></div>
+                <div class="form-group"><label>National ID Number Key String</label><input type="text" id="attrID" required></div>
+                <div class="form-group"><label>Identity Photo URI Link (Optional)</label><input type="text" id="attrPhoto" placeholder="http://image-server.com/path.jpg"></div>
 
-            <a href="index.html">
-                ← Back to Home
-            </a>
+               
+                <div id="conditional-teacher-fields">
+                    <div class="card-title" style="font-size:0.95rem; margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem;">Instructor Metrics</div>
+                    <div class="form-group"><label>Primary Specialized Subject Matter</label><input type="text" id="attrSubject" placeholder="e.g., Mathematics"></div>
+                    <div class="form-group"><label>Assigned Campus School Facility Name</label><input type="text" id="attrSchool" placeholder="e.g., Gasaka Primary School"></div>
+                </div>
 
+               
+                <div id="conditional-authority-fields" style="display:none;">
+                    <div class="card-title" style="font-size:0.95rem; margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem;">Jurisdiction Parameters</div>
+                    <div class="form-group">
+                        <label>Governing Jurisdiction Level Assignment</label>
+                        <select id="attrJurisdictionType">
+                            <option value="sector">Sector Administrative Hub</option>
+                            <option value="district">District Central Office</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Name of Sector/District Jurisdiction Territory</label><input type="text" id="attrJurisdictionName" placeholder="e.g., Gasaka Sector Office"></div>
+                </div>
+
+                <div class="form-group" style="margin-top:1.5rem;"><label>Initialize Secure Password</label><input type="password" id="attrPassword" required minlength="6"></div>
+                
+                <div style="display:flex; gap:0.75rem; margin-top:1.5rem;">
+                    <button type="button" id="btnPrevStep" style="background:#64748b; flex:1; padding: 0.65rem; border:none; color:white; border-radius:var(--radius-sm); cursor:pointer; font-weight:600;">Modify Role</button>
+                    <button type="submit" style="flex:1.5; background:var(--success); padding: 0.65rem; border:none; color:white; border-radius:var(--radius-sm); cursor:pointer; font-weight:600;">Persist Core Account</button>
+                </div>
+            </form>
         </div>
-
     </div>
-<<script src="../js/script.js" defer></script>
+
+    
+    <script src="js/script.js"></script>
 </body>
-</html>s
+</html>
