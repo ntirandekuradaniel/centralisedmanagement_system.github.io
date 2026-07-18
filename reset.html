@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reset Password</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Recovery Subsystem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="auth-body">
+    <nav class="portal-nav">
+        <h1 onclick="window.location.href='index.html'">Edu Rural Central</h1>
+        <div class="nav-links">
+            <button onclick="window.location.href='login.html'">Sign In</button>
+        </div>
+    </nav>
 
-<div class="auth-container">
+    <div class="wizard-container">
+        <div class="card-title">Password Recovery Subsystem</div>
+        <p style="font-size: 0.825rem; margin-bottom: 1.25rem; color: #475569;">Input your configured verification coordinates to securely update your system decryption password token.</p>
+        <form id="passwordResetForm">
+            <div class="form-group">
+                <label>Reset Validation Method</label>
+                <select id="resetChannel">
+                    <option value="email">Account Email Coordinates</option>
+                    <option value="phone">Configured Mobile Node</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="lblRecoveryInput">Account Email Coordinates</label>
+                <input type="text" id="recoveryTarget" required placeholder="name@domain.com">
+            </div>
+            <div class="form-group">
+                <label>New Desired Password</label>
+                <input type="password" id="recoveryNewPassword" required placeholder="Minimum 6 characters">
+            </div>
+            <button type="submit" class="btn-primary-action" style="width: 100%; padding: 0.65rem;">Re-engineer Encryption Token</button>
+        </form>
+    </div>
 
-<h2>Reset Password</h2>
-
-<p class="login-text">
-Recover your account access
-</p>
-
-<form action="dashboard.html" novalidate>
-
-<input type="text" placeholder="Username" required>
-
-<button type="submit" class="btn btn-primary full-btn">
-Send Reset Link
-</button>
-
-</form>
-
-<div class="auth-links">
-<a href="login.html">← Back to Login</a>
-</div>
-
-<div class="back-home">
-<a href="index.html">← Back to Home</a>
-</div>
-
-</div>
-<script src="../js/script.js" defer></script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
