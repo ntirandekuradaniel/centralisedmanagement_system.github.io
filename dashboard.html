@@ -1,90 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Workspace Hub Panels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="dashboard-container">
+    <div class="app-container" style="display: grid;">
+        <sidebar>
+            <div>
+                <div style="padding:0 1.5rem 1rem 1.5rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <h3 id="sidebarName" style="font-size:1rem; font-weight:700;">Active User</h3>
+                    <span id="sidebarRoleBadge" class="badge badge-info" style="margin-top:0.3rem;">ROLE</span>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="menu-item active" id="menu-dash" onclick="navigateTab('dash')">Core Infrastructure Engine</li>
+                    <li class="menu-item" id="menu-public" onclick="navigateTab('public')">Public Information Gateway</li>
+                    <li class="menu-item" id="menu-profile" onclick="navigateTab('profile')">Manage Profile Attributes</li>
+                </ul>
+            </div>
+            <div style="padding:0 1.5rem;">
+                <button class="btn-danger" style="width: 100%; font-weight:700; border-radius: var(--radius-sm); padding: 0.6rem; border:none; color:white; cursor:pointer;" id="btnForceDisconnect">Force Disconnect</button>
+            </div>
+        </sidebar>
 
-<aside class="sidebar">
+        <div class="content-workspace">
+            
+            <div id="tab-dash" class="tab-panel-block">
+               
+                <div id="workspace-teacher" style="display:none;">
+                    <div class="card" style="border-top: 3px solid var(--success);">
+                        <div class="card-title">
+                            <span>Campus Administrative Directives & Announcements</span>
+                            <span class="badge badge-success" style="font-size:0.65rem;">Live Feeds</span>
+                        </div>
+                        <div id="teacherAnnouncementsFeed"></div>
+                    </div>
 
-<div>
+                    <div style="display:grid; grid-template-columns:1fr 1.8fr; gap:1.5rem; align-items: start;">
+                        <div class="card">
+                            <div class="card-title">Transmit Infrastructure Log</div>
+                            <form id="teacherLogForm">
+                                <div class="form-group">
+                                    <label>Log Classification Category</label>
+                                    <select id="newReportCat">
+                                        <option value="Shortage of Teaching Materials">Shortage of Teaching Materials</option>
+                                        <option value="Infrastructure Deficit">Infrastructure Deficit</option>
+                                        <option value="Personnel Shortage">Personnel Shortage</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"><label>Detailed Description</label><textarea id="newReportDesc" rows="3" required placeholder="Provide breakdown context..."></textarea></div>
+                                <div class="form-group"><label>Attach Verification Artifact Link (Optional)</label><input type="text" id="newReportFile" placeholder="http://docs.com/sheet.pdf"></div>
+                                <button type="submit" class="btn-primary-action" style="width:100%; padding:0.65rem; border:none; border-radius:var(--radius-sm); cursor:pointer;">Submit Log</button>
+                            </form>
+                        </div>
 
-<h3>🌾 EduRural Central</h3>
+                        <div class="card">
+                            <div class="card-title">My Transmitted Deficit Logs</div>
+                            <div style="overflow-x: auto;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Description</th>
+                                            <th>Artifact Link</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="teacherLogsTableBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<ul class="sidebar-menu">
+                
+                <div id="workspace-headteacher" style="display:none;">
+                    <div class="card" style="border-top: 3px solid var(--warning);">
+                        <div class="card-title">Campus Escalation Ledger & Deficit Verification</div>
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Review logs submitted by campus instructors before committing them to the sub-district ledger.</p>
+                        <div style="overflow-x: auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Instructor</th>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Artifact</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="headteacherReviewTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
 
-<li><a href="#overview">Overview</a></li>
-<li><a href="#schools">Schools</a></li>
-<li><a href="#teachers">Teachers</a></li>
-<li><a href="#resources">Resources</a></li>
-<li><a href="#supervision">Supervision</a></li>
+                    <div class="card">
+                        <div class="card-title">Emit Local Campus Directive</div>
+                        <form id="headteacherDirectiveForm">
+                            <div class="form-group">
+                                <label>Directive Content</label>
+                                <textarea id="newDirectiveText" rows="3" required placeholder="Type operational updates or binding instructions..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary-action" style="padding: 0.5rem 1rem;">Broadcast Directive</button>
+                        </form>
+                    </div>
+                </div>
 
-</ul>
+                
+                <div id="workspace-highauthority" style="display:none;">
+                    <div class="card" style="border-top: 3px solid var(--primary-light);">
+                        <div class="card-title">Regional Infrastructure Orchestration Gateway</div>
+                        <div class="search-container">
+                            <input type="text" id="authoritySearch" placeholder="Filter verified regional logs by territory or category...">
+                        </div>
+                        <div style="overflow-x: auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Origin Facility</th>
+                                        <th>Category</th>
+                                        <th>Field Observations</th>
+                                        <th>Verification Key</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="authorityLedgerTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</div>
+            
+            <div id="tab-public" class="tab-panel-block" style="display:none;">
+                <div class="card">
+                    <div class="card-title">
+                        <span>Public Success Metrics & Feeds</span>
+                        <span class="badge badge-info">Verified Transparency Loops</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #475569;">Pushes confirmed structural success metrics out to build stakeholder visibility.</p>
+                    
+                    <div class="media-feed" id="publicMediaFeed"></div>
+                </div>
+            </div>
 
-<a href="login.html" class="btn-logout">Logout</a>
+            
+            <div id="tab-profile" class="tab-panel-block" style="display:none;">
+                <div class="card">
+                    <div class="card-title">Node Verification Context Parameters</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" id="profileAttributesDisplay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</aside>
-
-<main class="main-content">
-
-<div class="main-header">
-
-<h2>Welcome to Control Panel</h2>
-
-<div class="user-badge">Administrator</div>
-
-</div>
-
-<!-- OVERVIEW -->
-<section id="overview" class="data-panel">
-<h3>Overview</h3>
-<p>Welcome to EduRural Central Administration Dashboard.</p>
-</section>
-
-<!-- SCHOOLS -->
-<section id="schools" class="data-panel">
-<h3>School Records</h3>
-
-<table>
-<tr><th>Code</th><th>School</th><th>Students</th></tr>
-<tr><td>SCH-01</td><td>G.S Munazi</td><td>420</td></tr>
-</table>
-</section>
-
-<!-- TEACHERS -->
-<section id="teachers" class="data-panel">
-<h3>Teachers</h3>
-
-<table>
-<tr><th>ID</th><th>Name</th><th>Subject</th></tr>
-<tr><td>TCH-01</td><td>Uwimana Jean</td><td>Math</td></tr>
-</table>
-</section>
-
-<!-- RESOURCES -->
-<section id="resources" class="data-panel">
-<h3>Resources</h3>
-<p>Material distribution tracking system.</p>
-</section>
-
-<!-- SUPERVISION -->
-<section id="supervision" class="data-panel">
-<h3>Supervision</h3>
-<p>Inspection and audit reports.</p>
-</section>
-
-</main>
-
-</div>
-<script src="../js/script.js" defer></script>
-
+    <script src="js/script.js"></script>
 </body>
-</html>s
+</html>
