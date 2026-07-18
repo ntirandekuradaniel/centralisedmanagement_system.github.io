@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - EduRural Central</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Gateway Authentication</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="auth-body">
+    <nav class="portal-nav">
+        <h1 onclick="window.location.href='index.html'">Edu Rural Central</h1>
+        <div class="nav-links">
+            <button onclick="window.location.href='index.html'">Home</button>
+            <button onclick="window.location.href='register.html'" class="btn-primary-action">Register Account</button>
+        </div>
+    </nav>
 
-<div class="auth-container">
+    <div class="wizard-container">
+        <div id="loginAlert" class="alert alert-danger"></div>
+        <form id="loginForm">
+            <div class="card-title">Portal Gateway Authentication</div>
+            <div class="form-group">
+                <label>Institutional Account Email</label>
+                <input type="email" id="logEmail" required placeholder="name@domain.com">
+            </div>
+            <div class="form-group">
+                <label>Secure Password</label>
+                <input type="password" id="logPassword" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-primary-action" style="width: 100%; padding: 0.65rem; margin-bottom: 1.25rem;">Sign In to Workspace</button>
+            <p style="text-align: center; font-size: 0.8rem; color: #64748b;">
+                Forgot credentials? <a onclick="window.location.href='reset.html'" style="color:var(--primary-light); cursor:pointer; font-weight:700; text-decoration: underline;">Reset Access Password</a>
+            </p>
+        </form>
+    </div>
 
-<h2>Login</h2>
-
-<p class="login-text">
-Login to access the Dashboard Control Panel
-</p>
-
-<form action="dashboard.html" novalidate>
-<input type="text" placeholder="Username" required>
-<input type="password" placeholder="Password" required>
-
-<button type="submit" class="btn btn-primary full-btn">
-Login to Dashboard
-</button>
-
-</form>
-
-<div class="auth-links">
-
-<p>
-Don't have an account?
-<a href="register.html">Create Account</a>
-</p>
-
-</div>
-
-<div class="auth-links">
-<a href="reset.html">Forgot Password?</a>
-</div>
-
-<div class="back-home">
-<a href="index.html">← Back to Home</a>
-</div>
-
-</div>
-<script src="../js/script.js" defer></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
