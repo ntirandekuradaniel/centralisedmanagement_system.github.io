@@ -27,7 +27,9 @@ The mission of this project is to improve communication between schools and dist
 
 * HTML
 * CSS
-java script
+* java script
+
+  
 ## Author
 
 Daniel Ntirandekura
